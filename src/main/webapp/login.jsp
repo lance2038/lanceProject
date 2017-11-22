@@ -14,6 +14,6 @@
     <script type="text/javascript" src="${APP_PATH }/static/bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
-
+    <a href="">分页测试</a>
 </body>
 </html>

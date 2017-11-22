@@ -50,12 +50,12 @@ public class baseSpringTest
         */
 
         //3、批量插入多个员工；批量，使用可以执行批量操作的sqlSession。
-        /*  EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+         EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
         for(int i = 0;i<1000;i++){
             String uid = UUID.randomUUID().toString().substring(0,5)+i;
             mapper.insertSelective(new Employee(Long.valueOf(i),uid, "M", uid+"@163.com", 4L));
         }
         System.out.println("end");
-        */
+
     }
 }
