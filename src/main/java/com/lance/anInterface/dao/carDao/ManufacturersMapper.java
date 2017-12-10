@@ -4,7 +4,9 @@ import com.lance.anInterface.bean.manufacturersBean.Manufacturers;
 import com.lance.anInterface.bean.manufacturersBean.ManufacturersExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ManufacturersMapper {
     long countByExample(ManufacturersExample example);
 

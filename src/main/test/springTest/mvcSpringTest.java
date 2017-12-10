@@ -1,10 +1,10 @@
-/*
 package springTest;
 
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
+import com.lance.anInterface.bean.carsBean.Cars;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,14 +19,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-*/
 /**
  * @author lance
  * @version v0.0.1
  * @project lanceProject
  * @describe mvc测试
  * @since 2017/11/27
- **//*
+ **/
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -49,7 +48,7 @@ public class mvcSpringTest
     {
         //模拟请求拿到返回值
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-                .get("/Handler/getEmps.act").param("pageNumber","5")).andReturn();
+                .get("/carHandler/cars.act").param("pageNumber","5")).andReturn();
         //请求成功后，请求域会有pageInfo,可以取出参数做测试验证
         MockHttpServletRequest request = result.getRequest();
         PageInfo pi = (PageInfo) request.getAttribute("pageInfo");
@@ -63,11 +62,10 @@ public class mvcSpringTest
         }
 
         //获取员工数据
-        List<Employee> list = pi.getList();
-        for (Employee employee : list) {
-            System.out.println("ID："+employee.getEmpId()+"==>Name:"+employee.getEmpName());
+        List<Cars> list = pi.getList();
+        for (Cars cars : list) {
+            System.out.println("ID："+cars.toString());
         }
     }
 
 }
-*/

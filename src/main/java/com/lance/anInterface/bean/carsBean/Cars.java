@@ -36,17 +36,7 @@ public class Cars
 
     private String describ;
 
-    private Manufacturers manufacturers;
 
-    public Manufacturers getManufacturers()
-    {
-        return manufacturers;
-    }
-
-    public void setManufacturers(Manufacturers manufacturers)
-    {
-        this.manufacturers = manufacturers;
-    }
 
     public String getCarCode()
     {
@@ -201,10 +191,10 @@ public class Cars
     @Override
     public String toString()
     {
-        return "Cars{" + "carCode='" + carCode + '\'' + ", enName='" + enName + '\'' + ", zhName='" + zhName + '\'' + ", weight=" + weight + ", power=" + power + ", enginetype='" + enginetype + '\'' + ", enginedisplacement=" + enginedisplacement + ", maxspeed=" + maxspeed + ", accelerate=" + accelerate + ", price=" + price + ", carlevel='" + carlevel + '\'' + ", designer='" + designer + '\'' + ", tuner='" + tuner + '\'' + ", manufacturedate='" + manufacturedate + '\'' + ", describ='" + describ + '\'' + ", manufacturersBean=" + manufacturers + '}';
+        return "Cars{" + "carCode='" + carCode + '\'' + ", enName='" + enName + '\'' + ", zhName='" + zhName + '\'' + ", weight=" + weight + ", power=" + power + ", enginetype='" + enginetype + '\'' + ", enginedisplacement=" + enginedisplacement + ", maxspeed=" + maxspeed + ", accelerate=" + accelerate + ", price=" + price + ", carlevel='" + carlevel + '\'' + ", designer='" + designer + '\'' + ", tuner='" + tuner + '\'' + ", manufacturedate='" + manufacturedate + '\'' + ", describ='" + describ + '\'' + '}';
     }
 
-    public Cars(String carCode, String enName, String zhName, BigDecimal weight, BigDecimal power, String enginetype, BigDecimal enginedisplacement, BigDecimal maxspeed, BigDecimal accelerate, BigDecimal price, String carlevel, String designer, String tuner, String manufacturedate, String describ, Manufacturers manufacturers)
+    public Cars(String carCode, String enName, String zhName, BigDecimal weight, BigDecimal power, String enginetype, BigDecimal enginedisplacement, BigDecimal maxspeed, BigDecimal accelerate, BigDecimal price, String carlevel, String designer, String tuner, String manufacturedate, String describ)
     {
         this.carCode = carCode;
         this.enName = enName;
@@ -221,7 +211,6 @@ public class Cars
         this.tuner = tuner;
         this.manufacturedate = manufacturedate;
         this.describ = describ;
-        this.manufacturers = manufacturers;
     }
 
     public Cars()

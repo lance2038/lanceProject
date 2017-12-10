@@ -4,7 +4,9 @@ import com.lance.anInterface.bean.carsBean.Cars;
 import com.lance.anInterface.bean.carsBean.CarsExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CarsMapper {
     long countByExample(CarsExample example);
 

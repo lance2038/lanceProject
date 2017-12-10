@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lance.anInterface.dao.CarsMapper">
-  <resultMap id="BaseResultMap" type="com.lance.anInterface.bean.Cars">
+<mapper namespace="com.lance.anInterface.dao.carDao.CarsMapper">
+  <resultMap id="BaseResultMap" type="com.lance.anInterface.bean.carsBean.Cars">
     <result column="CAR_CODE" jdbcType="VARCHAR" property="carCode" />
     <result column="EN_NAME" jdbcType="VARCHAR" property="enName" />
     <result column="ZH_NAME" jdbcType="VARCHAR" property="zhName" />
@@ -80,7 +80,7 @@
     CAR_CODE, EN_NAME, ZH_NAME, WEIGHT, POWER, ENGINETYPE, ENGINEDISPLACEMENT, MAXSPEED, 
     ACCELERATE, PRICE, CARLEVEL, DESIGNER, TUNER, MANUFACTUREDATE, DESCRIB
   </sql>
-  <select id="selectByExample" parameterType="com.lance.anInterface.bean.CarsExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.lance.anInterface.bean.carsBean.CarsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,13 +94,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.lance.anInterface.bean.CarsExample">
+  <delete id="deleteByExample" parameterType="com.lance.anInterface.bean.carsBean.CarsExample">
     delete from AUTO_CARS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.lance.anInterface.bean.Cars">
+  <insert id="insert" parameterType="com.lance.anInterface.bean.carsBean.Cars">
     insert into AUTO_CARS (CAR_CODE, EN_NAME, ZH_NAME, 
       WEIGHT, POWER, ENGINETYPE, 
       ENGINEDISPLACEMENT, MAXSPEED, ACCELERATE, 
@@ -114,7 +114,7 @@
       #{tuner,jdbcType=VARCHAR}, #{manufacturedate,jdbcType=VARCHAR}, #{describ,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.lance.anInterface.bean.Cars">
+  <insert id="insertSelective" parameterType="com.lance.anInterface.bean.carsBean.Cars">
     insert into AUTO_CARS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="carCode != null">
@@ -211,7 +211,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.lance.anInterface.bean.CarsExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.lance.anInterface.bean.carsBean.CarsExample" resultType="java.lang.Long">
     select count(*) from AUTO_CARS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

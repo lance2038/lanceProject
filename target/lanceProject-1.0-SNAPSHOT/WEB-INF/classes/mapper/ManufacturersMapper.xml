@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lance.anInterface.dao.ManufacturersMapper">
-  <resultMap id="BaseResultMap" type="com.lance.anInterface.bean.Manufacturers">
+<mapper namespace="com.lance.anInterface.dao.carDao.ManufacturersMapper">
+  <resultMap id="BaseResultMap" type="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
     <result column="OCDE" jdbcType="VARCHAR" property="ocde" />
     <result column="RACINGLEVEL" jdbcType="VARCHAR" property="racinglevel" />
     <result column="NAME_EN" jdbcType="VARCHAR" property="nameEn" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List">
     OCDE, RACINGLEVEL, NAME_EN, NAME_ZH, COUNTRY, DESCRIB, LOGO
   </sql>
-  <select id="selectByExample" parameterType="com.lance.anInterface.bean.ManufacturersExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -85,13 +85,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.lance.anInterface.bean.ManufacturersExample">
+  <delete id="deleteByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample">
     delete from AUTO_MANUFACTURERS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.lance.anInterface.bean.Manufacturers">
+  <insert id="insert" parameterType="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
     insert into AUTO_MANUFACTURERS (OCDE, RACINGLEVEL, NAME_EN, 
       NAME_ZH, COUNTRY, DESCRIB, 
       LOGO)
@@ -99,7 +99,7 @@
       #{nameZh,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{describ,jdbcType=VARCHAR}, 
       #{logo,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.lance.anInterface.bean.Manufacturers">
+  <insert id="insertSelective" parameterType="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
     insert into AUTO_MANUFACTURERS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="ocde != null">
@@ -148,7 +148,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.lance.anInterface.bean.ManufacturersExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample" resultType="java.lang.Long">
     select count(*) from AUTO_MANUFACTURERS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -196,7 +196,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <resultMap id="BaseResultMap" type="com.lance.anInterface.bean.Manufacturers">
+  <resultMap id="BaseResultMap" type="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
     <result column="OCDE" jdbcType="VARCHAR" property="ocde" />
     <result column="RACINGLEVEL" jdbcType="VARCHAR" property="racinglevel" />
     <result column="NAME_EN" jdbcType="VARCHAR" property="nameEn" />
@@ -266,7 +266,7 @@
   <sql id="Base_Column_List">
     OCDE, RACINGLEVEL, NAME_EN, NAME_ZH, COUNTRY, DESCRIB, LOG
   </sql>
-  <select id="selectByExample" parameterType="com.lance.anInterface.bean.ManufacturersExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -280,13 +280,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.lance.anInterface.bean.ManufacturersExample">
+  <delete id="deleteByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample">
     delete from AUTO_MANUFACTURERS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.lance.anInterface.bean.Manufacturers">
+  <insert id="insert" parameterType="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
     insert into AUTO_MANUFACTURERS (OCDE, RACINGLEVEL, NAME_EN, 
       NAME_ZH, COUNTRY, DESCRIB, 
       LOG)
@@ -294,7 +294,7 @@
       #{nameZh,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{describ,jdbcType=VARCHAR}, 
       #{log,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.lance.anInterface.bean.Manufacturers">
+  <insert id="insertSelective" parameterType="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
     insert into AUTO_MANUFACTURERS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="ocde != null">
@@ -343,7 +343,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.lance.anInterface.bean.ManufacturersExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample" resultType="java.lang.Long">
     select count(*) from AUTO_MANUFACTURERS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

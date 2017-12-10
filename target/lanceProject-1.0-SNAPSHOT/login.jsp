@@ -10,7 +10,7 @@
 <head>
     <title>欢迎使用</title>
     <link href="${APP_PATH }/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <script type="text/javascript" src="${APP_PATH }/static/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="${APP_PATH }/static/jquery/jquery.js"></script>
     <script type="text/javascript" src="${APP_PATH }/static/bootstrap/js/bootstrap.js"></script>
 </head>
 <body>

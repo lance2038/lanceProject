@@ -97,6 +97,17 @@ public class Manufacturers {
         this.cars = cars;
     }
 
+    public Manufacturers(String ocde, String racinglevel, String nameEn, String nameZh, String country, String describ, String logo)
+    {
+        this.ocde = ocde;
+        this.racinglevel = racinglevel;
+        this.nameEn = nameEn;
+        this.nameZh = nameZh;
+        this.country = country;
+        this.describ = describ;
+        this.logo = logo;
+    }
+
     public Manufacturers()
     {
     }

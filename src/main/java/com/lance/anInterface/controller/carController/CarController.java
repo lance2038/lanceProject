@@ -3,10 +3,13 @@ package com.lance.anInterface.controller.carController;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lance.anInterface.bean.carsBean.Cars;
+import com.lance.anInterface.bean.returnMSG;
+import com.lance.anInterface.service.carService.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -20,16 +23,18 @@ import java.util.List;
 @RequestMapping("/carHandler")
 public class CarController
 {
-    @RequestMapping(value = "cars")
-    public String getAllCarMessage(
+    @Resource
+    CarService carService;
+    @RequestMapping(value = "/cars")
+    public returnMSG getAllCarMessage(
             @RequestParam(value = "pageNumber",defaultValue = "1") Integer pageNumber,
             @RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize
     )
     {
-        //设置分页
+        //设置分页 carCode
         PageHelper.startPage(pageNumber,pageSize);
-
-
-        return null;
+        List<Cars> list = carService.getAllCars();
+        PageInfo pi = new PageInfo(list);
+        return returnMSG.success().add("pageInfo", pi);
     }
 }
