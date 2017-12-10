@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lance.anInterface.dao.carDao.ManufacturersMapper">
+  <resultMap id="BaseResultMap" type="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
+    <result column="OCDE" jdbcType="VARCHAR" property="ocde" />
+    <result column="RACINGLEVEL" jdbcType="VARCHAR" property="racinglevel" />
+    <result column="NAME_EN" jdbcType="VARCHAR" property="nameEn" />
+    <result column="NAME_ZH" jdbcType="VARCHAR" property="nameZh" />
+    <result column="COUNTRY" jdbcType="VARCHAR" property="country" />
+    <result column="DESCRIB" jdbcType="VARCHAR" property="describ" />
+    <result column="LOGO" jdbcType="VARCHAR" property="logo" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    OCDE, RACINGLEVEL, NAME_EN, NAME_ZH, COUNTRY, DESCRIB, LOGO
+  </sql>
+  <select id="selectByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from AUTO_MANUFACTURERS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample">
+    delete from AUTO_MANUFACTURERS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
+    insert into AUTO_MANUFACTURERS (OCDE, RACINGLEVEL, NAME_EN, 
+      NAME_ZH, COUNTRY, DESCRIB, 
+      LOGO)
+    values (#{ocde,jdbcType=VARCHAR}, #{racinglevel,jdbcType=VARCHAR}, #{nameEn,jdbcType=VARCHAR}, 
+      #{nameZh,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{describ,jdbcType=VARCHAR}, 
+      #{logo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
+    insert into AUTO_MANUFACTURERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ocde != null">
+        OCDE,
+      </if>
+      <if test="racinglevel != null">
+        RACINGLEVEL,
+      </if>
+      <if test="nameEn != null">
+        NAME_EN,
+      </if>
+      <if test="nameZh != null">
+        NAME_ZH,
+      </if>
+      <if test="country != null">
+        COUNTRY,
+      </if>
+      <if test="describ != null">
+        DESCRIB,
+      </if>
+      <if test="logo != null">
+        LOGO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ocde != null">
+        #{ocde,jdbcType=VARCHAR},
+      </if>
+      <if test="racinglevel != null">
+        #{racinglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null">
+        #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameZh != null">
+        #{nameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="describ != null">
+        #{describ,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample" resultType="java.lang.Long">
+    select count(*) from AUTO_MANUFACTURERS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update AUTO_MANUFACTURERS
+    <set>
+      <if test="record.ocde != null">
+        OCDE = #{record.ocde,jdbcType=VARCHAR},
+      </if>
+      <if test="record.racinglevel != null">
+        RACINGLEVEL = #{record.racinglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nameEn != null">
+        NAME_EN = #{record.nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nameZh != null">
+        NAME_ZH = #{record.nameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null">
+        COUNTRY = #{record.country,jdbcType=VARCHAR},
+      </if>
+      <if test="record.describ != null">
+        DESCRIB = #{record.describ,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logo != null">
+        LOGO = #{record.logo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update AUTO_MANUFACTURERS
+    set OCDE = #{record.ocde,jdbcType=VARCHAR},
+      RACINGLEVEL = #{record.racinglevel,jdbcType=VARCHAR},
+      NAME_EN = #{record.nameEn,jdbcType=VARCHAR},
+      NAME_ZH = #{record.nameZh,jdbcType=VARCHAR},
+      COUNTRY = #{record.country,jdbcType=VARCHAR},
+      DESCRIB = #{record.describ,jdbcType=VARCHAR},
+      LOGO = #{record.logo,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
+    <result column="OCDE" jdbcType="VARCHAR" property="ocde" />
+    <result column="RACINGLEVEL" jdbcType="VARCHAR" property="racinglevel" />
+    <result column="NAME_EN" jdbcType="VARCHAR" property="nameEn" />
+    <result column="NAME_ZH" jdbcType="VARCHAR" property="nameZh" />
+    <result column="COUNTRY" jdbcType="VARCHAR" property="country" />
+    <result column="DESCRIB" jdbcType="VARCHAR" property="describ" />
+    <result column="LOG" jdbcType="VARCHAR" property="log" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    OCDE, RACINGLEVEL, NAME_EN, NAME_ZH, COUNTRY, DESCRIB, LOG
+  </sql>
+  <select id="selectByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from AUTO_MANUFACTURERS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample">
+    delete from AUTO_MANUFACTURERS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
+    insert into AUTO_MANUFACTURERS (OCDE, RACINGLEVEL, NAME_EN, 
+      NAME_ZH, COUNTRY, DESCRIB, 
+      LOG)
+    values (#{ocde,jdbcType=VARCHAR}, #{racinglevel,jdbcType=VARCHAR}, #{nameEn,jdbcType=VARCHAR}, 
+      #{nameZh,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{describ,jdbcType=VARCHAR}, 
+      #{log,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lance.anInterface.bean.manufacturersBean.Manufacturers">
+    insert into AUTO_MANUFACTURERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ocde != null">
+        OCDE,
+      </if>
+      <if test="racinglevel != null">
+        RACINGLEVEL,
+      </if>
+      <if test="nameEn != null">
+        NAME_EN,
+      </if>
+      <if test="nameZh != null">
+        NAME_ZH,
+      </if>
+      <if test="country != null">
+        COUNTRY,
+      </if>
+      <if test="describ != null">
+        DESCRIB,
+      </if>
+      <if test="log != null">
+        LOG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ocde != null">
+        #{ocde,jdbcType=VARCHAR},
+      </if>
+      <if test="racinglevel != null">
+        #{racinglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null">
+        #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameZh != null">
+        #{nameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="describ != null">
+        #{describ,jdbcType=VARCHAR},
+      </if>
+      <if test="log != null">
+        #{log,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lance.anInterface.bean.manufacturersBean.ManufacturersExample" resultType="java.lang.Long">
+    select count(*) from AUTO_MANUFACTURERS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update AUTO_MANUFACTURERS
+    <set>
+      <if test="record.ocde != null">
+        OCDE = #{record.ocde,jdbcType=VARCHAR},
+      </if>
+      <if test="record.racinglevel != null">
+        RACINGLEVEL = #{record.racinglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nameEn != null">
+        NAME_EN = #{record.nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nameZh != null">
+        NAME_ZH = #{record.nameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null">
+        COUNTRY = #{record.country,jdbcType=VARCHAR},
+      </if>
+      <if test="record.describ != null">
+        DESCRIB = #{record.describ,jdbcType=VARCHAR},
+      </if>
+      <if test="record.log != null">
+        LOG = #{record.log,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update AUTO_MANUFACTURERS
+    set OCDE = #{record.ocde,jdbcType=VARCHAR},
+      RACINGLEVEL = #{record.racinglevel,jdbcType=VARCHAR},
+      NAME_EN = #{record.nameEn,jdbcType=VARCHAR},
+      NAME_ZH = #{record.nameZh,jdbcType=VARCHAR},
+      COUNTRY = #{record.country,jdbcType=VARCHAR},
+      DESCRIB = #{record.describ,jdbcType=VARCHAR},
+      LOG = #{record.log,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

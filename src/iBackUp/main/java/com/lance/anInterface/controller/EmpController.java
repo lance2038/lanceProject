@@ -5,7 +5,6 @@ import com.github.pagehelper.PageInfo;
 import com.lance.anInterface.bean.Employee;
 import com.lance.anInterface.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +21,7 @@ import java.util.List;
  * @since 2017/11/22
  **/
 @Controller
-@RequestMapping("/empHandler")
+@RequestMapping("/Handler")
 public class EmpController
 {
     @Autowired
@@ -40,5 +39,10 @@ public class EmpController
         PageInfo page = new PageInfo(empsList, 10);
         model.addAttribute("pageInfo", page);
         return "Emps/list";
+    }
+    @RequestMapping("/hello")
+    public String hello()
+    {
+        return "Emps/hello";
     }
 }
