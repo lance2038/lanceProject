@@ -63,11 +63,4 @@ public class Msg
 		return MessageFormat.format(msg, args);
 	}
 
-	public static void main(String[] args)
-	{
-		Date today = new Date();
-		System.out.println(getMsg("dlgs.Test", "梁荣杰", today, today,
-				4123565.567, 5523, 0.00524, 12465.586465879825));
-	}
-
 }

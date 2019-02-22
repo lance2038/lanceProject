@@ -10,17 +10,17 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * @author lance
  * @version 1.0.0
- * @Project ayyhIF
  * @Description AES加密类
  * @Date 2017-10-29 19:51
  **/
-public class AesEncodeUtil {
+public class AesEncodeUtil
+{
     //初始向量
     public static final String VIPARA = "aabbccddeeffgghh";   //AES 为16bytes. DES 为8bytes
     //编码方式
     public static final String bm = "UTF-8";
     //私钥
-    private static final String ASE_KEY="aabbccddeeffgghh";
+    private static final String ASE_KEY = "aabbccddeeffgghh";
     //AES固定格式为128/192/256 bits.即：16/24/32bytes。DES固定格式为128bits，即8bytes。
 
     /**
@@ -29,9 +29,11 @@ public class AesEncodeUtil {
      * @param cleartext
      * @return
      */
-    public static String encrypt(String cleartext) {
+    public static String encrypt(String cleartext)
+    {
         //加密方式： AES128(CBC/PKCS5Padding) + Base64, 私钥：aabbccddeeffgghh
-        try {
+        try
+        {
             IvParameterSpec zeroIv = new IvParameterSpec(VIPARA.getBytes());
             //两个参数，第一个为私钥字节数组， 第二个为加密方式 AES或者DES
             SecretKeySpec key = new SecretKeySpec(ASE_KEY.getBytes(), "AES");
@@ -43,7 +45,9 @@ public class AesEncodeUtil {
             byte[] encryptedData = cipher.doFinal(cleartext.getBytes(bm));
 
             return new BASE64Encoder().encode(encryptedData);
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
             return "";
         }
@@ -55,43 +59,23 @@ public class AesEncodeUtil {
      * @param encrypted
      * @return
      */
-    public static String decrypt(String encrypted) {
-        try {
+    public static String decrypt(String encrypted)
+    {
+        try
+        {
             byte[] byteMi = new BASE64Decoder().decodeBuffer(encrypted);
             IvParameterSpec zeroIv = new IvParameterSpec(VIPARA.getBytes());
-            SecretKeySpec key = new SecretKeySpec(
-                    ASE_KEY.getBytes(), "AES");
+            SecretKeySpec key = new SecretKeySpec(ASE_KEY.getBytes(), "AES");
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             //与加密时不同MODE:Cipher.DECRYPT_MODE
             cipher.init(Cipher.DECRYPT_MODE, key, zeroIv);
             byte[] decryptedData = cipher.doFinal(byteMi);
             return new String(decryptedData, bm);
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
             return "";
         }
-    }
-
-    /**
-     * 测试
-     *
-     * @param args
-     * @throws Exception
-     */
-    public static void main(String[] args) throws Exception
-    {
-
-
-        String content = "98.5674";
-        // 加密
-        System.out.println("加密前：" + content);
-        String encryptResult = encrypt(content);
-
-        System.out.println("加密后：" + new String(encryptResult));
-        // 解密
-        String decryptResult = decrypt(encryptResult);
-        System.out.println("解密后：" + new String(decryptResult));
-
-
     }
 }

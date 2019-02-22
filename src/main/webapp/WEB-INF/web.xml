@@ -10,17 +10,17 @@
   <!-- 403错误拦截 -->
   <error-page>
     <error-code>403</error-code>
-    <location>/WEB-INF/pages/error/error403.jsp</location>
+    <location>/WEB-INF/views/error/error403.jsp</location>
   </error-page>
   <!-- 404错误拦截 -->
   <error-page>
     <error-code>404</error-code>
-    <location>/WEB-INF/pages/error/error404.jsp</location>
+    <location>/WEB-INF/views/error/error404.jsp</location>
   </error-page>
   <!-- 500错误拦截 -->
   <error-page>
     <error-code>500</error-code>
-    <location>/WEB-INF/pages/error/error500.jsp</location>
+    <location>/WEB-INF/views/error/error500.jsp</location>
   </error-page>
   <!-- 2.spring配置 -->
   <context-param>

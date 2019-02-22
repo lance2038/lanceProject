@@ -21,7 +21,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver
         CustomException customException = null;
         if (e instanceof CustomException)
         {
-            customException = (CustomException)e;
+            customException = (CustomException) e;
         }
         else
         {
@@ -29,7 +29,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver
         }
         String message = customException.getMessage();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("message",message);
+        modelAndView.addObject("message", message);
         modelAndView.setViewName("error/error");
         return modelAndView;
     }

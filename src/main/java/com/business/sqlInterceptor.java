@@ -11,7 +11,6 @@ import java.util.Enumeration;
 /**
  * @author lance
  * @version v0.0.1
- * @project ayyhIF
  * @describe sql防注入拦截器
  * @since 2017/10/28
  **/
