@@ -1,3 +1,3 @@
 # lanceProject
-Sample project
-TODO自定义AOP注解加密解密
+
+一个spring+springMvc+mybatis的基础框架
